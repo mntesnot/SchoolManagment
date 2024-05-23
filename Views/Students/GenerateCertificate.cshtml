@@ -1,0 +1,102 @@
+﻿@model Ceritifcs;
+@{
+    ViewData["Title"] = "GenerateCertificate";
+}
+<div class="card">
+    <div class="card-header">
+        <form asp-action="GenerateCertificate" asp-controller="Students" method="get">
+            <label asp-for="SerachId"></label>
+            <input asp-for="SerachId"  placeholder="enter id"/>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="card-body">
+        @if(Model.Student != null)
+        {
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Student.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Student.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Student.BOD)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Student.BOD)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Student.Gender)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Student.Gender)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Student.Status)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Student.Status)
+                </dd>
+            </dl>
+        }
+    </div>
+    <div class="card-footer">
+        @if(Model.Registration.Any())
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                           Student
+                        </th>
+                        <th>
+                            Course
+                        </th>
+                        <th>
+                            StartDate
+                        </th>
+                        <th>
+                            EndDate
+                        </th>
+                        <th>
+                            Grade
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Registration)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Student.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Course.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EndDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Grade)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>                           
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        }
+    </div>
+</div>
+
+
